@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
-import { configuration } from "../utils/constants";
+import  configuration from "../utils/constants";
 const { OpenAIApi } = require("openai");
 
 type Data = {
