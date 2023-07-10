@@ -36,5 +36,5 @@ export default async function handler(
     }
 
     //api call
-    res.status(200).json({ result: suggestion });
+    res.status(200).json({ input: suggestion });
 }
