@@ -1,12 +1,14 @@
 import { FC, useEffect, useState } from "react";
+import OpenAIOutput from "./OpenAIOutput";
 
 const TextInput: FC = () => {
     //description state
     const [description, setDescription] = useState("");
 
     const [error, setError] = useState(false);
+
     //OpenAi output state
-    const [suggestion, setSuggestion] = useState("");
+    const [suggestion, setSuggestion] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
@@ -17,6 +19,7 @@ const TextInput: FC = () => {
         setError(false);
     }, [description.length]);
 
+    //API call
     const submit = async () => {
         //check if character limit is exceeded
         if (description.length > 160) {
@@ -35,15 +38,17 @@ const TextInput: FC = () => {
                 //input state: main body of text
                 body: JSON.stringify({ description }),
             });
-            const suggestion: { input: string } = await res.json();
-            const { input } = suggestion;
-            setSuggestion(input);
+            const data = await res.json();
+            const { description: suggestionText } = data;
+            setSuggestion(suggestionText);
         } catch (error) {
             console.log(error);
         } finally {
             setLoading(false);
         }
     };
+
+    //--
 
     return (
         <div className="flex flex-col justify-center gap-4 mx-auto w-1/3">
@@ -90,16 +95,7 @@ const TextInput: FC = () => {
                 )}
             </button>
             {/* OpenAI output */}
-            {suggestion && (
-                <div className="mt-6">
-                    <h3 className="text-gray-700 text-lg font-semibold pb-2">
-                        Your Marketing Copy
-                    </h3>
-                    <div className="relative w-full rounded-md bg-gray-100 p-4">
-                        <p className="text-sm text-gray-700 ">{suggestion}</p>
-                    </div>
-                </div>
-            )}
+            <OpenAIOutput suggestion={suggestion} />
         </div>
     );
 };

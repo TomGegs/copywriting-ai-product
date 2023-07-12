@@ -1,23 +1,26 @@
-
 import { FC, useState } from "react";
 
-const OpenAIOutput: FC = () => {
+interface OpenAIOutputProps {
+    suggestion: string | null;
+}
+
+const OpenAIOutput: FC<OpenAIOutputProps> = ({suggestion}) => {
     //OpenAi output state
 
-    const [suggestion, setSuggestion] = useState("");
-
-    
+   
     return (
-        <div className="flex flex-col justify-center mx-auto w-1/3">
-            <div className="relative w-full">
-                <p>
-                    {suggestion}
-                </p>
+        <>
+            {suggestion !== null && (
+                <div className="mt-6">
+                    <h3 className="text-gray-700 text-lg font-semibold pb-2">
+                        Your Marketing Copy
+                    </h3>
+                    <div className="relative w-full rounded-md bg-gray-100 p-4">
+                        <p className="text-sm text-gray-700 ">{suggestion}</p>
+                    </div>
                 </div>
-
-
-            
-        </div>
+            )}
+        </>
     );
 };
 
