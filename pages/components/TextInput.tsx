@@ -51,13 +51,13 @@ const TextInput: FC = () => {
     //--
 
     return (
-        <div className="flex flex-col justify-center gap-4 mx-auto w-1/3">
+        <div className="flex flex-col justify-center gap-4 mx-auto font-big">
             <div className="relative w-full">
                 {/* Input field for marketing copy */}
-                <h3 className="text-gray-700">Marketing Copy</h3>
+                <h3 className="text-foreground text-xs pl-1">Use your AI mate to create your marketing copywrite </h3>
                 {/* error message if character limit is exceeded */}
                 {error && (
-                    <span className="text-red-500 text-sm">
+                    <span className="text-red-500 text-xs">
                         Character limit exceeded
                     </span>
                 )}
@@ -67,15 +67,15 @@ const TextInput: FC = () => {
                     onChange={(e) => setDescription(e.target.value)}
                     //user input state
                     value={description}
-                    className=" p-4 mt-1 w-full rounded-lg bg-gray-100 border-transparent focus:border-gray-500 resize-none text-black text-sm focus:bg-white focus:ring-0"
-                    placeholder="Enter your marketing copy here"
+                    className=" p-4 mt-1 w-full rounded-lg bg-gray-100 border-transparent focus:border-gray-500 resize-none text-black text-xs focus:bg-white focus:ring-0"
+                    placeholder="Enter info about your copywrite needs here..."
                 />
                 {/* character limit in bottom right of textarea - turn red when exceeding character limit */}
                 <div
-                    className={`absolute bottom-4 right-0 ${
+                    className={`absolute bottom-2 right-1 ${
                         description.length > 160
                             ? "text-red-500"
-                            : "text-gray-700"
+                            : "text-primary"
                     } p-1 text-xs`}>
                     <span>{description.length}</span>
                     /160
@@ -84,7 +84,7 @@ const TextInput: FC = () => {
             <button
                 type="button"
                 onClick={submit}
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                className="bg-primary hover:bg-[rgb(255, 255, 207)]  font-marker text-secondary font-bold py-2 px-4 rounded">
                 {loading ? (
                     <div className="flex w-full gap-2 ">
                         <p className="mx-auto">Loading...</p>
