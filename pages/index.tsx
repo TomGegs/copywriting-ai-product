@@ -24,20 +24,21 @@ export default function Home() {
                         src="/goodCopyBg.png"
                         width={450}
                         height={450}
+                        className="w-[250px] h-[250px] md:w-[450px] md:h-[450px]"
                     />
                     <Image
                         alt="Good Copy Icon"
                         src="/goodCopyIcon.png"
                         width={400}
                         height={400}
-                        className="absolute top-2 left-15"
+                        className="absolute -top-1 md:top-10 left-15"
                     />
                     <Image
                         alt="Good Copy Icon"
                         src="/goodCopyText.png"
-                        width={250}
-                        height={250}
-                        className="absolute top-5 left-15  animate-[spin_12s_linear_infinite] "
+                        width={400}
+                        height={400}
+                        className="absolute top-5 md:top-8 left-15 w-[220px] h-[220px] md:h-[400px] md:w-[400px] animate-[spin_10s_linear_infinite] md:animate-[spin_10s_linear_infinite] "
                     />
                 </div>
                 <div>
